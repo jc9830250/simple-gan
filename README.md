@@ -47,20 +47,19 @@ if __name__ == '__main__':
 
 ```
 ### mnist.load_data()
-從keras.datasets取出mnist預設資料集
+從keras.datasets取出mnist預設資料集，圖片如下：
 
 ![alt text](https://upload.wikimedia.org/wikipedia/commons/2/27/MnistExamples.png)
-
 
 ### np.expand_dims(X_train, axis=3)
 在X_train中加上第三維度
 - X_train:資料集
 - axis: 維度位置
 
-
 ## 初始化
 ```python
 def __init__(self, width=28, height=28, channels=1):
+		#size:28 * 28 灰階
 
         self.width = width
         self.height = height
@@ -79,7 +78,6 @@ def __init__(self, width=28, height=28, channels=1):
         self.stacked_generator_discriminator = self.__stacked_generator_discriminator()
 
         self.stacked_generator_discriminator.compile(loss='binary_crossentropy', optimizer=self.optimizer)
-
 
 ```
 
