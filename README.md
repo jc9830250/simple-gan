@@ -48,7 +48,7 @@ if __name__ == '__main__':
 ```
 ### mnist.load_data()
 從keras.datasets取出mnist預設資料集
-![logo](https://upload.wikimedia.org/wikipedia/commons/2/27/MnistExamples.png)
+!(https://upload.wikimedia.org/wikipedia/commons/2/27/MnistExamples.png)
 
 
 ### np.expand_dims(X_train, axis=3)
