@@ -28,13 +28,16 @@ pip install virtualenv
 # Medium article
 see the companion article on Medium : https://medium.com/@mattiaspinelli/simple-generative-adversarial-network-gans-with-keras-1fe578e44a87
 
-## 教學
+
+
+# 教學
 以下是程式碼解析
 
 首先是真正執行部分
-```
+```python
 if __name__ == '__main__':
 	(X_train, _), (_, _) = mnist.load_data()
+	#取出預設的資料集圖像
 	# Rescale -1 to 1
 	X_train = (X_train.astype(np.float32) - 127.5) / 127.5
 	X_train = np.expand_dims(X_train, axis=3)
@@ -43,6 +46,10 @@ if __name__ == '__main__':
 	gan.train(X_train)
 
 ```
+
+
+
+
 
 ## 初始化
 ```
