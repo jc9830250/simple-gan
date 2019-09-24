@@ -28,7 +28,7 @@ pip install virtualenv
 # Medium article
 see the companion article on Medium : https://medium.com/@mattiaspinelli/simple-generative-adversarial-network-gans-with-keras-1fe578e44a87
 
-##教學
+## 教學
 以下是程式碼解析
 
 首先是真正執行部分
@@ -44,7 +44,7 @@ if __name__ == '__main__':
 
 ```
 
-##初始化
+## 初始化
 ```
 def __init__(self, width=28, height=28, channels=1):
 
@@ -69,22 +69,22 @@ def __init__(self, width=28, height=28, channels=1):
 
 ```
 
-###shape(width,height,channels)
+### shape(width,height,channels)
 - width:
 - height:
 - channels:
 
-###Adam(lr=0.0002, beta_1=0.5, decay=8e-8)
+### Adam(lr=0.0002, beta_1=0.5, decay=8e-8)
 - lr:
 - beta_1:
 - decay:
 
-###compile(loss='binary_crossentropy', optimizer=self.optimizer)
+### compile(loss='binary_crossentropy', optimizer=self.optimizer)
 - loss:
 - optimizer:
 
 
-##生成器
+## 生成器
 ```
 def __generator(self):
         """ Declare generator """
@@ -107,7 +107,7 @@ def __generator(self):
 ```
 
 
-##識別器
+## 識別器
 ```
 def __discriminator(self):
         """ Declare discriminator """
