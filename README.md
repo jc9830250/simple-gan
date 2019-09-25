@@ -80,17 +80,23 @@ class GAN(object):
     	....
 		.....
 ```
-### __init__:初始化
+### __init__
+初始化設定
 
-### __generator:生成器
+### __generator
+生成器設定
 
-### __discriminator:識別器
+### __discriminator
+識別器設定
 
-### __stacked_generator_discriminator:疊層生成&識別器
+### __stacked_generator_discriminator
+疊層生成&識別器設定
 
-### train:訓練
+### train
+進行訓練
 
-### plot_images:生成圖片
+### plot_images
+用來生成圖片
 
 ## 初始化
 進行初始設定，預先給定模型基礎設定
@@ -202,7 +208,7 @@ def __stacked_generator_discriminator(self):
 
         return model
 ```
-#訓練GAN
+## 訓練GAN
 先訓練discriminator在訓練
 ```python
  def train(self, X_train, epochs=20000, batch = 32, save_interval = 100):
@@ -234,3 +240,43 @@ def __stacked_generator_discriminator(self):
             if cnt % save_interval == 0:
                 self.plot_images(save2file=True, step=cnt)
 ```
+
+## 產生圖片
+```
+def plot_images(self, save2file=False, samples=16, step=0):
+        ''' Plot and generated images '''
+        if not os.path.exists("./images"):
+            os.makedirs("./images")
+        filename = "./images/mnist_%d.png" % step
+        noise = np.random.normal(0, 1, (samples, 100))
+
+        images = self.G.predict(noise)
+
+        plt.figure(figsize=(10, 10))
+
+        for i in range(images.shape[0]):
+            plt.subplot(4, 4, i+1)
+            image = images[i, :, :, :]
+            image = np.reshape(image, [self.height, self.width])
+            plt.imshow(image, cmap='gray')
+            plt.axis('off')
+        plt.tight_layout()
+
+        if save2file:
+            plt.savefig(filename)
+            plt.close('all')
+        else:
+            plt.show()
+```
+### plt
+python的視覺化套件matplotlib
+
+> matplotlib參考:https://ithelp.ithome.com.tw/articles/10186484
+
+### noise = np.random.normal(0, 1, (samples, 100))
+使用高斯分佈建立隨機樣本，回傳16組100個值的隨機生成陣列
+- samples:取16個樣本數
+
+### self.G.predict(noise)
+交給生成器進行預測，回傳16組100個值的陣列
+
