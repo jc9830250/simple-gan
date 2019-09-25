@@ -137,11 +137,10 @@ def __init__(self, width=28, height=28, channels=1):
 - beta_1:一階預估的衰減因子
 - decay:學習後的衰減率參數
 
-> Adam介紹:
-> https://zhuanlan.zhihu.com/p/25473305
-> https://keras.io/zh/optimizers/
+> Adam介紹: 
+> 1.https://zhuanlan.zhihu.com/p/25473305
+> 2.https://keras.io/zh/optimizers/
 https://medium.com/@chih.sheng.huang821/%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92-%E5%9F%BA%E7%A4%8E%E6%95%B8%E5%AD%B8-%E4%B8%89-%E6%A2%AF%E5%BA%A6%E6%9C%80%E4%BD%B3%E8%A7%A3%E7%9B%B8%E9%97%9C%E7%AE%97%E6%B3%95-gradient-descent-optimization-algorithms-b61ed1478bd7
-
 
 ### self.G = self.__generator()
 載入生成器模型設定
@@ -159,7 +158,6 @@ https://medium.com/@chih.sheng.huang821/%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92-%E5
 - metrics:回傳指標數值，這邊採用accuracy
 
 > 常用loss設定介紹:https://zhuanlan.zhihu.com/p/48078990
-
 
 
 ## 生成器
@@ -202,16 +200,15 @@ def __generator(self):
 - 作標準化，加速神經網路
 - 減去平均除以標準差
 - momentum 動量
-- 可參考:
-- https://ithelp.ithome.com.tw/articles/10204106
-- http://violin-tao.blogspot.com/2018/02/ml-batch-normalization.html
-- https://morvanzhou.github.io/tutorials/machine-learning/ML-intro/3-08-batch-normalization/
+> 可參考:
+> 1.https://ithelp.ithome.com.tw/articles/10204106
+> 2.http://violin-tao.blogspot.com/2018/02/ml-batch-normalization.html
+> 3.https://morvanzhou.github.io/tutorials/machine-learning/ML-intro/3-08-batch-normalization/
 
 ### tanh()
 - Hyperbolic tangent function
 - 激活函數的一種
-- 可參考:
-- https://ithelp.ithome.com.tw/articles/10189085
+> 可參考:https://ithelp.ithome.com.tw/articles/10189085
 
 ## 識別器
 ```python
@@ -229,7 +226,7 @@ def __discriminator(self):
 
         return model
 ```
-## sigmoid
+### sigmoid
 -輸出範圍介於[0, 1]
 -用來判斷圖片的真假程度
 -可參考:
