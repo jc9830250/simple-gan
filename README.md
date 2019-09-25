@@ -33,6 +33,7 @@ see the companion article on Medium : https://medium.com/@mattiaspinelli/simple-
 # 教學
 以下是程式碼解析
 
+## 1執行
 首先是真正執行部分
 ```python
 if __name__ == '__main__':
@@ -46,15 +47,40 @@ if __name__ == '__main__':
 	gan.train(X_train)
 
 ```
-### mnist.load_data()
+### 1-1mnist.load_data()
 從keras.datasets取出mnist預設資料集，圖片如下：
 
 ![alt text](https://upload.wikimedia.org/wikipedia/commons/2/27/MnistExamples.png)
 
-### np.expand_dims(X_train, axis=3)
+### 1-2np.expand_dims(X_train, axis=3)
 在X_train中加上第三維度
 - X_train:資料集
 - axis: 維度位置
+
+## GAN物件
+```
+class GAN(object):
+	def __init__(self, width=28, height=28, channels=1):
+		....
+		.....
+    def __generator(self):
+    	....
+		.....
+    def __discriminator(self):
+    	....
+		.....
+    def __stacked_generator_discriminator(self):
+    	....
+		.....
+    def train(self, X_train, epochs=100, batch = 32, save_interval = 100):
+    	....
+		.....
+    def plot_images(self, save2file=False, samples=16, step=0):
+    	....
+		.....
+```
+
+
 
 ## 初始化
 ```python
