@@ -35,7 +35,7 @@ see the companion article on Medium : https://medium.com/@mattiaspinelli/simple-
 以下是程式碼解析
 
 結果顯示
-[Imgur](https://i.imgur.com/6zrOQbd.gifv)
+![Imgur](https://i.imgur.com/6zrOQbd.gifv)
 
 
 ## 1 執行
