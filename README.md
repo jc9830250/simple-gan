@@ -145,34 +145,33 @@ def __generator(self):
 ```
 ### LeakyReLU(alpha=0.2)
 - alpha: 斜率
-LeakyReLU避免神經元死亡，就算沒激活仍然還是有一定斜率
-可參考:
+- LeakyReLU避免神經元死亡，就算沒激活仍然還是有一定斜率
+-可參考:
 https://keras.io/zh/layers/normalization/
 http://sofasofa.io/forum_main_post.php?postid=1001234
 https://keras-cn.readthedocs.io/en/latest/layers/advanced_activation_layer/
 
 ### Dense()
 - 全連結層
--units: 輸出維度 ex:256。
--input_shape: 輸入的維度大小 這邊100維
--activation: 所使用的激活函數
--Reshape: 調整輸出的尺寸 ex(None,28,28,1)
+- units: 輸出維度 ex:256。
+- input_shape: 輸入的維度大小 這邊100維
+- activation: 所使用的激活函數
+- Reshape: 調整輸出的尺寸 ex(None,28,28,1)
 
 ### BatchNormalization()
--作標準化，加速神經網路
--減去平均除以標準差
+- 作標準化，加速神經網路
+- 減去平均除以標準差
 - momentum 動量
-
-可參考:
+- 可參考:
 https://ithelp.ithome.com.tw/articles/10204106
 http://violin-tao.blogspot.com/2018/02/ml-batch-normalization.html
 https://morvanzhou.github.io/tutorials/machine-learning/ML-intro/3-08-batch-normalization/
 
 ### tanh()
--Hyperbolic tangent function
--激活函數的一種
-可參考:
-https://ithelp.ithome.com.tw/articles/10189085
+- Hyperbolic tangent function
+- 激活函數的一種
+- 可參考:
+ https://ithelp.ithome.com.tw/articles/10189085
 
 ## 識別器
 ```python
