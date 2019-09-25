@@ -81,23 +81,17 @@ class GAN(object):
         ....
         .....
 ```
-### __init__
-初始化設定
+### __init__:初始化設定
 
-### __generator
-生成器設定
+### __generator:生成器設定
 
-### __discriminator
-識別器設定
+### __discriminator:識別器設定
 
-### __stacked_generator_discriminator
-疊層生成&識別器設定
+### __stacked_generator_discriminator:疊層生成&識別器設定
 
-### train
-進行訓練
+### train:進行訓練
 
-### plot_images
-用來生成圖片
+### plot_images:用來生成圖片
 
 ## 初始化
 進行初始設定，預先給定模型基礎設定
@@ -138,8 +132,8 @@ def __init__(self, width=28, height=28, channels=1):
 - decay:學習後的衰減率參數
 
 > Adam介紹: 
-> 1.https://zhuanlan.zhihu.com/p/25473305
-> 2.https://keras.io/zh/optimizers/
+> - https://zhuanlan.zhihu.com/p/25473305
+> - https://keras.io/zh/optimizers/
 https://medium.com/@chih.sheng.huang821/%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92-%E5%9F%BA%E7%A4%8E%E6%95%B8%E5%AD%B8-%E4%B8%89-%E6%A2%AF%E5%BA%A6%E6%9C%80%E4%BD%B3%E8%A7%A3%E7%9B%B8%E9%97%9C%E7%AE%97%E6%B3%95-gradient-descent-optimization-algorithms-b61ed1478bd7
 
 ### self.G = self.__generator()
@@ -184,10 +178,10 @@ def __generator(self):
 ### LeakyReLU(alpha=0.2)
 - alpha: 斜率
 - LeakyReLU避免神經元死亡，就算沒激活仍然還是有一定斜率
--可參考:
-- https://keras.io/zh/layers/normalization/
-- http://sofasofa.io/forum_main_post.php?postid=1001234
-- https://keras-cn.readthedocs.io/en/latest/layers/advanced_activation_layer/
+> 可參考:
+> - https://keras.io/zh/layers/normalization/
+> - http://sofasofa.io/forum_main_post.php?postid=1001234
+> - https://keras-cn.readthedocs.io/en/latest/layers/advanced_activation_layer/
 
 ### Dense()
 - 全連結層
@@ -240,12 +234,12 @@ def __stacked_generator_discriminator(self):
         self.D.trainable = False ##固定識別器參數
 
         model = Sequential()
-    #將generator和discriminator合併
+        
+        #將generator和discriminator合併
         model.add(self.G) 
         model.add(self.D)
         return model
 ```
-
 
 ## 進行訓練
 批次訓練，先訓練discriminator，再訓練generator
@@ -257,7 +251,7 @@ def __stacked_generator_discriminator(self):
             ## train discriminator
             random_index = np.random.randint(0, len(X_train) - np.int64(batch/2)) #隨機產生index
             legit_images = X_train[random_index : random_index + np.int64(batch/2)].reshape(np.int64(batch/2), self.width, self.height, self.channels)   #從raw data隨機抽取真實圖片資料
-        #隨機高斯產生分部的數值 均值為0，標準差為1，產生16個陣列，裡面包含100個數值
+            #隨機高斯產生分部的數值 均值為0，標準差為1，產生16個陣列，裡面包含100個數值
             gen_noise = np.random.normal(0, 1, (np.int64(batch/2), 100)) 
             syntetic_images = self.G.predict(gen_noise) #利用生成generator假圖片，給discriminator訓練用的假圖片(self.width, self.height, self.channels)
 
@@ -280,11 +274,19 @@ def __stacked_generator_discriminator(self):
             if cnt % save_interval == 0: #每100次生成手寫圖片
                 self.plot_images(save2file=True, step=cnt)
 ```
+### gen_noise = np.random.normal(0, 1, (np.int64(batch/2), 100)) 
+隨機高斯產生分部的數值 均值為0，標準差為1，產生16個陣列，裡面包含100個數值
 
+> numpy.random.normal:https://blog.csdn.net/lanchunhui/article/details/50163669
 
-> numpy.random.normal:
-> https://blog.csdn.net/lanchunhui/article/details/50163669
+### syntetic_images = self.G.predict(gen_noise)
+利用生成器產生假圖片，給discriminator訓練用的假圖片(self.width, self.height, self.channels)
 
+### x_combined_batch = np.concatenate((legit_images, syntetic_images)) 
+合併真假圖片樣本
+
+### y_combined_batch = np.concatenate((np.ones((np.int64(batch/2), 1)), np.zeros((np.int64(batch/2), 1)))) 
+合併標籤，真圖片分類給1，假圖片給0
 
 
 ## 圖片生成
