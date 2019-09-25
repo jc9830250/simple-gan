@@ -29,11 +29,12 @@ pip install virtualenv
 see the companion article on Medium : https://medium.com/@mattiaspinelli/simple-generative-adversarial-network-gans-with-keras-1fe578e44a87
 
 
+# Kears參考手冊:https://keras.io
 
 # 教學
 以下是程式碼解析
 
-## 1執行
+## 1 執行
 首先是真正執行部分
 ```python
 if __name__ == '__main__':
@@ -57,7 +58,7 @@ if __name__ == '__main__':
 - X_train:資料集
 - axis: 維度位置
 
-## GAN物件
+## 2 GAN物件
 ```
 class GAN(object):
 	def __init__(self, width=28, height=28, channels=1):
@@ -79,10 +80,20 @@ class GAN(object):
     	....
 		.....
 ```
+### __init__:初始化
 
+### __generator:生成器
 
+### __discriminator:識別器
+
+### __stacked_generator_discriminator:疊層生成&識別器
+
+### train:訓練
+
+### plot_images:生成圖片
 
 ## 初始化
+進行初始設定，預先給定模型基礎設定
 ```python
 def __init__(self, width=28, height=28, channels=1):
 		#size:28 * 28 灰階
@@ -108,19 +119,35 @@ def __init__(self, width=28, height=28, channels=1):
 ```
 
 ### shape(width,height,channels)
-- width:
-- height:
-- channels:
+設定張量形狀，三個參數表示這是三階張量
+- width:寬度
+- height:長度
+- channels:顏色通道
 
-### Adam(lr=0.0002, beta_1=0.5, decay=8e-8)
-- lr:
-- beta_1:
-- decay:
+### optimizer = Adam(lr=0.0002, beta_1=0.5, decay=8e-8)
+優化器設定，這邊採用Adam
+- lr:float,學習速率
+- beta_1:一階預估的衰減因子
+- decay:學習後的衰減率參數
 
-### compile(loss='binary_crossentropy', optimizer=self.optimizer)
-- loss:
-- optimizer:
+> Adam介紹:https://zhuanlan.zhihu.com/p/25473305
 
+### self.G = self.__generator()
+載入生成器模型設定
+
+### self.D = self.__discriminator()
+載入識別器模型設定
+
+### self.stacked_generator_discriminator = self.__stacked_generator_discriminator()
+載入疊層生成&識別器設定
+
+### compile(loss='binary_crossentropy', optimizer=self.optimizer,metrics=['accuracy'])
+配置模型
+- loss:設定損失函數，這邊採用binary_crossentropy，適合二元問題
+- optimizer:配置優化器
+- metrics:回傳指標數值，這邊採用accuracy
+
+> 常用loss設定介紹:https://zhuanlan.zhihu.com/p/48078990
 
 ## 生成器
 ```python
