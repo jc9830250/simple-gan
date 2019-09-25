@@ -35,7 +35,7 @@ see the companion article on Medium : https://medium.com/@mattiaspinelli/simple-
 以下是程式碼解析
 
 結果顯示
-![Imgur](https://i.imgur.com/6zrOQbd.gif)
+![Imgur](https://i.imgur.com/YOp9mKP.gif)
 
 
 ## 1 執行
@@ -274,6 +274,14 @@ def plot_images(self, save2file=False, samples=16, step=0):
 ```
 ### plt
 python的視覺化套件matplotlib
+- figure:設定參數
+- subplot:在一個畫布上給予子圖
+- imshow:顯示圖片
+- axis:顯示軸線
+- tight_layout:填充子圖至整個畫布
+- savefig:儲存圖像
+- close:關閉畫布
+- show:顯示圖像
 
 > matplotlib參考:https://ithelp.ithome.com.tw/articles/10186484
 
