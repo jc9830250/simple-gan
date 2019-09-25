@@ -136,6 +136,48 @@ def __discriminator(self):
         return model
 ```
 
+## 生成器和識別器交疊
+固定discriminator 訓練generator
+```python
+def __stacked_generator_discriminator(self):
+
+        self.D.trainable = False ##固定識別器參數
+
+        model = Sequential()
+        model.add(self.G)
+        model.add(self.D)
+
+        return model
+```
+#訓練GAN
+先訓練discriminator在訓練
+```python
+ def train(self, X_train, epochs=20000, batch = 32, save_interval = 100):
+
+        for cnt in range(epochs):
+
+            ## train discriminator
+            random_index = np.random.randint(0, len(X_train) - np.int64(batch/2)) 
+            legit_images = X_train[random_index : random_index + np.int64(batch/2)].reshape(np.int64(batch/2), self.width, self.height, self.channels)   
+
+            gen_noise = np.random.normal(0, 1, (np.int64(batch/2), 100)) 
+            syntetic_images = self.G.predict(gen_noise)
+
+            x_combined_batch = np.concatenate((legit_images, syntetic_images))
+            y_combined_batch = np.concatenate((np.ones((np.int64(batch/2), 1)), np.zeros((np.int64(batch/2), 1))))
+
+            d_loss = self.D.train_on_batch(x_combined_batch, y_combined_batch)
 
 
+            # train generator
 
+            noise = np.random.normal(0, 1, (batch, 100))
+            y_mislabled = np.ones((batch, 1))
+
+            g_loss = self.stacked_generator_discriminator.train_on_batch(noise, y_mislabled)
+
+            print ('epoch: %d, [Discriminator :: d_loss: %f], [ Generator :: loss: %f]' % (cnt, d_loss[0], g_loss))
+
+            if cnt % save_interval == 0:
+                self.plot_images(save2file=True, step=cnt)
+```
