@@ -147,9 +147,9 @@ def __generator(self):
 - alpha: 斜率
 - LeakyReLU避免神經元死亡，就算沒激活仍然還是有一定斜率
 -可參考:
-https://keras.io/zh/layers/normalization/
-http://sofasofa.io/forum_main_post.php?postid=1001234
-https://keras-cn.readthedocs.io/en/latest/layers/advanced_activation_layer/
+- https://keras.io/zh/layers/normalization/
+- http://sofasofa.io/forum_main_post.php?postid=1001234
+- https://keras-cn.readthedocs.io/en/latest/layers/advanced_activation_layer/
 
 ### Dense()
 - 全連結層
@@ -163,15 +163,15 @@ https://keras-cn.readthedocs.io/en/latest/layers/advanced_activation_layer/
 - 減去平均除以標準差
 - momentum 動量
 - 可參考:
- -- https://ithelp.ithome.com.tw/articles/10204106
- -- http://violin-tao.blogspot.com/2018/02/ml-batch-normalization.html
- -- https://morvanzhou.github.io/tutorials/machine-learning/ML-intro/3-08-batch-normalization/
+- https://ithelp.ithome.com.tw/articles/10204106
+- http://violin-tao.blogspot.com/2018/02/ml-batch-normalization.html
+- https://morvanzhou.github.io/tutorials/machine-learning/ML-intro/3-08-batch-normalization/
 
 ### tanh()
 - Hyperbolic tangent function
 - 激活函數的一種
 - 可參考:
- https://ithelp.ithome.com.tw/articles/10189085
+- https://ithelp.ithome.com.tw/articles/10189085
 
 ## 識別器
 ```python
@@ -191,9 +191,9 @@ def __discriminator(self):
 ```
 ## sigmoid
 -輸出範圍介於[0, 1]
-用來判斷圖片的真假程度
-可參考:
-https://ithelp.ithome.com.tw/articles/10189085
+-用來判斷圖片的真假程度
+-可參考:
+- https://ithelp.ithome.com.tw/articles/10189085
 
 ## 生成器和識別器交疊
 
