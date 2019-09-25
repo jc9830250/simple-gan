@@ -242,7 +242,7 @@ def __stacked_generator_discriminator(self):
 ```
 
 ## 產生圖片
-```
+```python
 def plot_images(self, save2file=False, samples=16, step=0):
         ''' Plot and generated images '''
         if not os.path.exists("./images"):
