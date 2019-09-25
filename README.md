@@ -163,9 +163,9 @@ https://keras-cn.readthedocs.io/en/latest/layers/advanced_activation_layer/
 - 減去平均除以標準差
 - momentum 動量
 - 可參考:
-https://ithelp.ithome.com.tw/articles/10204106
-http://violin-tao.blogspot.com/2018/02/ml-batch-normalization.html
-https://morvanzhou.github.io/tutorials/machine-learning/ML-intro/3-08-batch-normalization/
+ -- https://ithelp.ithome.com.tw/articles/10204106
+ -- http://violin-tao.blogspot.com/2018/02/ml-batch-normalization.html
+ -- https://morvanzhou.github.io/tutorials/machine-learning/ML-intro/3-08-batch-normalization/
 
 ### tanh()
 - Hyperbolic tangent function
