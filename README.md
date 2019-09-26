@@ -36,6 +36,11 @@ see the companion article on Medium : https://medium.com/@mattiaspinelli/simple-
 
 
 ## 1 執行
+```
+plt.switch_backend('agg')   # allows code to run without a system DISPLAY
+```
+cmd指令可以繪製圖案
+
 首先是真正執行部分
 ```python
 if __name__ == '__main__':
@@ -54,8 +59,12 @@ if __name__ == '__main__':
 
 ![alt text](https://upload.wikimedia.org/wikipedia/commons/2/27/MnistExamples.png)
 
+### X_train = (X_train.astype(np.float32) - 127.5) / 127.5
+將圖像資料做正規化，縮限在-1到1之間
+RGB最大值為255，在這邊資料都為灰階
+
 ### 1-2np.expand_dims(X_train, axis=3)
-在X_train中加上第三維度
+在X_train中的第四個位置加上資料
 - X_train:資料集
 - axis: 維度位置
 
@@ -228,6 +237,8 @@ def __discriminator(self):
 
 ## 層生成&識別器
 固定discriminator 訓練generator
+在這邊會綁定兩個模型，讓discriminator帶著generator一起訓練
+但不更動discriminator的模型
 ```python
 def __stacked_generator_discriminator(self):
 
@@ -240,6 +251,8 @@ def __stacked_generator_discriminator(self):
         model.add(self.D)
         return model
 ```
+### self.D.trainable = False 
+固定識別器，只讀取參數不做影響
 
 ## 進行訓練
 批次訓練，先訓練discriminator，再訓練generator
