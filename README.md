@@ -368,9 +368,12 @@ https://blog.csdn.net/qq_33221533/article/details/82256531
 - numpy.reshape:
 https://docs.scipy.org/doc/numpy/reference/generated/numpy.reshape.html
 
-核心网络层
+-核心网络层
 https://keras.io/zh/layers/core/
 
-activation function
+-activation function
 https://ithelp.ithome.com.tw/articles/10189085
+
+-張量
+https://www.slideshare.net/ccckmit/ss-102849756
 
