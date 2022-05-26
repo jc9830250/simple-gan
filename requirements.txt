@@ -33,7 +33,7 @@ scipy==1.0.0
 simplegeneric==0.8.1
 six==1.11.0
 subprocess32==3.2.7
-tensorflow==1.5.0
+tensorflow==2.7.2
 tensorflow-tensorboard==1.5.0
 traitlets==4.3.2
 wcwidth==0.1.7
